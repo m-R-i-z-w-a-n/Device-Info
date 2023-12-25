@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:plainpie="http://schemas.android.com/apk/res-auto"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+
+    <FrameLayout
+        android:id="@+id/progress_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        plainpie:layout_constraintBottom_toBottomOf="parent"
+        plainpie:layout_constraintStart_toStartOf="parent"
+        plainpie:layout_constraintTop_toTopOf="parent">
+
+        <ProgressBar
+            android:id="@+id/progress_bar_test"
+            style="@style/CircularDeterminateProgressBar"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:progress="60"
+            plainpie:layout_constraintBottom_toBottomOf="parent"
+            plainpie:layout_constraintStart_toStartOf="parent"
+            plainpie:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/txt_test_completed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:textColor="@color/black"
+            android:layout_marginTop="10dp"/>
+
+    </FrameLayout>
+
+    <TextView
+        android:id="@+id/test_title_count"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10.0dip"
+        android:fontFamily="sans-serif-condensed"
+        android:paddingStart="10.0dip"
+        android:text="4/12 Test completed"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        plainpie:layout_constraintStart_toEndOf="@id/progress_test"
+        plainpie:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/test_subtext"
+        android:layout_width="0.0dip"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-condensed"
+        android:lineSpacingExtra="5dp"
+        android:paddingStart="10.0dip"
+        android:paddingBottom="10.0dip"
+        android:text="@string/test_promo_subtext"
+        android:textColor="@color/black"
+        plainpie:layout_constraintEnd_toEndOf="@id/refresh_test"
+        plainpie:layout_constraintEnd_toStartOf="@id/refresh_test"
+        plainpie:layout_constraintStart_toEndOf="@id/progress_test"
+        plainpie:layout_constraintTop_toBottomOf="@id/test_title_count" />
+
+    <ImageView
+        android:id="@+id/refresh_test"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="20.0dip"
+        android:src="@drawable/right_open"
+        plainpie:layout_constraintBottom_toBottomOf="parent"
+        plainpie:layout_constraintEnd_toEndOf="parent"
+        plainpie:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

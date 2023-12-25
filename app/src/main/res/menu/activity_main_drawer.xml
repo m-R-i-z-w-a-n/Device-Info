@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/item_dashboard"
+            android:icon="@drawable/ic_home"
+            android:title="Dashboard" />
+        <item
+            android:id="@+id/item_device"
+            android:icon="@drawable/ic_device"
+            android:title="Device" />
+        <item
+            android:id="@+id/item_os"
+            android:icon="@drawable/ic_bug"
+            android:title="OS" />
+        <item
+            android:id="@+id/item_cpu"
+            android:icon="@drawable/ic_chip"
+            android:title="CPU" />
+        <item
+            android:id="@+id/item_battery"
+            android:icon="@drawable/ic_battery_charging"
+            android:title="Battery" />
+        <item
+            android:id="@+id/item_memory"
+            android:icon="@drawable/ic_memory"
+            android:title="Storage" />
+        <item
+            android:id="@+id/item_sensor"
+            android:icon="@drawable/ic_sensor"
+            android:title="Sensors" />
+        <item
+            android:id="@+id/item_network"
+            android:icon="@drawable/ic_network"
+            android:title="Network" />
+        <item
+            android:id="@+id/item_display"
+            android:icon="@drawable/ic_display"
+            android:title="Display" />
+        <item
+            android:id="@+id/item_camera"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Camera" />
+        <item
+            android:id="@+id/item_features"
+            android:icon="@drawable/nav_feature"
+            android:title="Features" />
+        <item
+            android:id="@+id/item_user_apps"
+            android:icon="@drawable/android"
+            android:title="User Apps" />
+        <item
+            android:id="@+id/item_system_apps"
+            android:icon="@drawable/android_debug_bridge"
+            android:title="System Apps" />
+        <item
+            android:id="@+id/item_test"
+            android:icon="@drawable/ic_test_your_device"
+            android:title="Test My Device" />
+        <item
+            android:id="@+id/item_settings"
+            android:icon="@drawable/ic_settings"
+            android:title="Settings" />
+    </group>
+</menu>
