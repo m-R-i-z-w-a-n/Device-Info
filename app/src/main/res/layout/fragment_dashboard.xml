@@ -1,78 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ui.dashboard.DashboardFragment">
+    xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="deviceViewModel"
+            type="com.practice.deviceinfo.ui.device.DeviceViewModel" />
+    </data>
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/card_view_device_info"
-            android:layout_width="match_parent"
-            android:layout_height="130.0dip"
-            android:layout_margin="5.0dip"
-            android:clickable="true"
-            android:foreground="?selectableItemBackground"
-            android:stateListAnimator="@anim/lift_on_touch"
-            app:cardBackgroundColor="@color/white"
-            app:cardCornerRadius="16dp">
-
-            <RelativeLayout
-                android:id="@+id/device_rel_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:gravity="center"
-                android:padding="20.0dip">
-
-                <ImageView
-                    android:id="@+id/imageView3"
-                    android:layout_width="50.0dip"
-                    android:layout_height="55.0dip"
-                    android:src="@drawable/ic_mobile" />
-
-                <TextView
-                    android:id="@+id/dash_device_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_toEndOf="@+id/imageView3"
-                    android:layout_toRightOf="@+id/imageView3"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="Device Name"
-                    android:textColor="@color/black"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
-
-                <TextView
-                    android:id="@+id/dash_model_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/dash_device_name"
-                    android:layout_toEndOf="@+id/imageView3"
-                    android:layout_toRightOf="@+id/imageView3"
-                    android:fontFamily="sans-serif-condensed"
-                    android:text="Model Name"
-                    android:textColor="@color/black" />
-            </RelativeLayout>
-        </androidx.cardview.widget.CardView>
+        tools:context=".ui.dashboard.DashboardFragment">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:orientation="horizontal">
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
             <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_cpu"
+                android:id="@+id/card_view_device_info"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginBottom="5.0dip"
-                android:layout_weight="1.0"
+                android:layout_height="130.0dip"
+                android:layout_margin="5.0dip"
                 android:clickable="true"
                 android:foreground="?selectableItemBackground"
                 android:stateListAnimator="@anim/lift_on_touch"
@@ -80,398 +31,457 @@
                 app:cardCornerRadius="16dp">
 
                 <RelativeLayout
+                    android:id="@+id/device_rel_layout"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20.0dip"
-                    android:gravity="center">
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:padding="20.0dip">
+
+                    <ImageView
+                        android:id="@+id/imageView3"
+                        android:layout_width="50.0dip"
+                        android:layout_height="55.0dip"
+                        android:src="@drawable/ic_mobile" />
 
                     <TextView
-                        android:id="@+id/cpu_textview"
-                        android:layout_width="match_parent"
+                        android:id="@+id/dash_device_name"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
+                        android:layout_toEndOf="@+id/imageView3"
+                        android:layout_toRightOf="@+id/imageView3"
                         android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="CPU"
+                        android:text="@{deviceViewModel.device.manufacturer}"
                         android:textColor="@color/black"
+                        android:textSize="20sp"
                         android:textStyle="bold" />
 
-                    <FrameLayout
-                        android:layout_width="match_parent"
+                    <TextView
+                        android:id="@+id/dash_model_name"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_below="@+id/cpu_textview">
-
-                        <ProgressBar
-                            android:id="@+id/progress_bar_cpu"
-                            style="@style/CircularDeterminateProgressBar"
-                            android:layout_width="55dp"
-                            android:layout_height="55dp"
-                            android:layout_gravity="center"
-                            android:layout_marginTop="10dp"
-                            android:progress="60"/>
-
-                        <TextView
-                            android:id="@+id/txt_cpu_usage"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:textColor="@color/black"
-                            android:layout_marginTop="10dp"/>
-                    </FrameLayout>
+                        android:layout_below="@+id/dash_device_name"
+                        android:layout_toEndOf="@+id/imageView3"
+                        android:layout_toRightOf="@+id/imageView3"
+                        android:fontFamily="sans-serif-condensed"
+                        android:text="@{deviceViewModel.device.brand}"
+                        android:textColor="@color/black" />
                 </RelativeLayout>
             </androidx.cardview.widget.CardView>
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/card_view_storage"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="5.0dip"
-                android:layout_marginRight="5.0dip"
-                android:layout_marginBottom="5.0dip"
-                android:layout_weight="1.0"
-                android:clickable="true"
-                android:foreground="?selectableItemBackground"
-                android:stateListAnimator="@anim/lift_on_touch"
-                app:cardBackgroundColor="@color/white"
-                app:cardCornerRadius="16dp">
+                android:layout_marginTop="5dp"
+                android:orientation="horizontal">
 
-                <RelativeLayout
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_cpu"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="20.0dip"
-                    android:gravity="center">
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginBottom="5.0dip"
+                    android:layout_weight="1.0"
+                    android:clickable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:stateListAnimator="@anim/lift_on_touch"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="16dp">
 
-                    <TextView
-                        android:id="@+id/storage_tecxtview"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10.0dip"
-                        android:fontFamily="sans-serif-condensed"
-                        android:gravity="center"
-                        android:text="Storage"
-                        android:textColor="@color/black"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_below="@+id/storage_tecxtview"
+                        android:layout_marginBottom="20.0dip"
                         android:gravity="center">
 
-                        <ProgressBar
-                            android:id="@+id/progress_bar_storage"
-                            style="@style/CircularDeterminateProgressBar"
-                            android:layout_width="55dp"
-                            android:layout_height="55dp"
-                            android:layout_marginTop="10dp"
-                            android:progress="60"/>
-                    </LinearLayout>
-                </RelativeLayout>
-            </androidx.cardview.widget.CardView>
-        </LinearLayout>
+                        <TextView
+                            android:id="@+id/cpu_textview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10.0dip"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text="CPU"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
 
-                <LinearLayout
-                    android:id="@+id/test_my_device_linear_layout"
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/cpu_textview">
+
+                            <ProgressBar
+                                android:id="@+id/progress_bar_cpu"
+                                style="@style/CircularDeterminateProgressBar"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_gravity="center"
+                                android:layout_marginTop="10dp"
+                                android:progress="60"/>
+
+                            <TextView
+                                android:id="@+id/txt_cpu_usage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center"
+                                android:textColor="@color/black"
+                                android:layout_marginTop="10dp"/>
+                        </FrameLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/card_view_storage"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_marginBottom="5.0dip"
+                    android:layout_weight="1.0"
                     android:clickable="true"
-                    android:focusable="true">
+                    android:foreground="?selectableItemBackground"
+                    android:stateListAnimator="@anim/lift_on_touch"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="16dp">
 
-                    <androidx.cardview.widget.CardView
-                        android:id="@+id/test_my_device_card"
-                        app:cardBackgroundColor="@color/white"
-                        app:cardCornerRadius="16dp"
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="5.0dip"
-                        android:layout_marginRight="5.0dip"
-                        android:layout_marginBottom="5.0dip"
-                        android:clickable="true"
-                        android:focusable="true"
-                        android:foreground="?selectableItemBackground"
-                        android:stateListAnimator="@anim/lift_on_touch">
+                        android:layout_marginBottom="20.0dip"
+                        android:gravity="center">
 
-                        <include layout="@layout/test_my_device_homescreen_view" />
-                    </androidx.cardview.widget.CardView>
-                </LinearLayout>
+                        <TextView
+                            android:id="@+id/storage_tecxtview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10.0dip"
+                            android:fontFamily="sans-serif-condensed"
+                            android:gravity="center"
+                            android:text="Storage"
+                            android:textColor="@color/black"
+                            android:textStyle="bold" />
 
-        <!--        <LinearLayout-->
-        <!--            android:id="@+id/cpu_live_linear_layout"-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content">-->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/storage_tecxtview"
+                            android:gravity="center">
 
-        <!--            <androidx.cardview.widget.CardView-->
-        <!--                android:id="@+id/card_cpu_live"-->
-        <!--                card_view:cardBackgroundColor="?card_back"-->
-        <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginLeft="5.0dip"-->
-        <!--                android:layout_marginRight="5.0dip"-->
-        <!--                android:layout_marginBottom="5.0dip"-->
-        <!--                android:clickable="true"-->
-        <!--                android:focusable="true"-->
-        <!--                android:foreground="?selectableItemBackground"-->
-        <!--                android:stateListAnimator="@anim/lift_on_touch">-->
+                            <ProgressBar
+                                android:id="@+id/progress_bar_storage"
+                                style="@style/CircularDeterminateProgressBar"
+                                android:layout_width="55dp"
+                                android:layout_height="55dp"
+                                android:layout_marginTop="10dp"
+                                android:progress="60"/>
+                        </LinearLayout>
+                    </RelativeLayout>
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-        <!--                <include layout="@layout/cpu_fragment" />-->
-        <!--            </androidx.cardview.widget.CardView>-->
-        <!--        </LinearLayout>-->
+            <LinearLayout
+                android:id="@+id/test_my_device_linear_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true">
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal">-->
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/test_my_device_card"
+                    app:cardBackgroundColor="@color/white"
+                    app:cardCornerRadius="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="5.0dip"
+                    android:layout_marginRight="5.0dip"
+                    android:layout_marginBottom="5.0dip"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?selectableItemBackground"
+                    android:stateListAnimator="@anim/lift_on_touch">
 
-        <!--            <androidx.cardview.widget.CardView-->
-        <!--                android:id="@+id/card_view3"-->
-        <!--                card_view:cardBackgroundColor="?card_back"-->
-        <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginLeft="5.0dip"-->
-        <!--                android:layout_marginBottom="5.0dip"-->
-        <!--                android:layout_weight="1.0"-->
-        <!--                android:clickable="true"-->
-        <!--                android:foreground="?selectableItemBackground"-->
-        <!--                android:stateListAnimator="@anim/lift_on_touch">-->
+                    <include layout="@layout/test_my_device_homescreen_view" />
+                </androidx.cardview.widget.CardView>
+            </LinearLayout>
 
-        <!--                <RelativeLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="match_parent"-->
-        <!--                    android:gravity="center">-->
+            <!--        <LinearLayout-->
+            <!--            android:id="@+id/cpu_live_linear_layout"-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content">-->
 
-        <!--                    <TextView-->
-        <!--                        android:id="@+id/cpu_tecxtview1"-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="10.0dip"-->
-        <!--                        android:fontFamily="sans-serif-condensed"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:text="@string/nav_os"-->
-        <!--                        android:textColor="?text_color"-->
-        <!--                        android:textStyle="bold" />-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card_cpu_live"-->
+            <!--                card_view:cardBackgroundColor="?card_back"-->
+            <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="5.0dip"-->
+            <!--                android:layout_marginRight="5.0dip"-->
+            <!--                android:layout_marginBottom="5.0dip"-->
+            <!--                android:clickable="true"-->
+            <!--                android:focusable="true"-->
+            <!--                android:foreground="?selectableItemBackground"-->
+            <!--                android:stateListAnimator="@anim/lift_on_touch">-->
 
-        <!--                    <LinearLayout-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_below="@+id/cpu_tecxtview1"-->
-        <!--                        android:layout_marginBottom="20.0dip"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:orientation="vertical">-->
+            <!--                <include layout="@layout/cpu_fragment" />-->
+            <!--            </androidx.cardview.widget.CardView>-->
+            <!--        </LinearLayout>-->
 
-        <!--                        <ImageView-->
-        <!--                            android:id="@+id/dashboard_os_image"-->
-        <!--                            android:layout_width="60.0dip"-->
-        <!--                            android:layout_height="60.0dip"-->
-        <!--                            android:layout_margin="5.0dip" />-->
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="horizontal">-->
 
-        <!--                        <TextView-->
-        <!--                            android:id="@+id/os_name_text"-->
-        <!--                            android:layout_width="wrap_content"-->
-        <!--                            android:layout_height="wrap_content"-->
-        <!--                            android:fontFamily="sans-serif-condensed"-->
-        <!--                            android:gravity="center"-->
-        <!--                            android:text="Android"-->
-        <!--                            android:textColor="?text_color" />-->
-        <!--                    </LinearLayout>-->
-        <!--                </RelativeLayout>-->
-        <!--            </androidx.cardview.widget.CardView>-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card_view3"-->
+            <!--                card_view:cardBackgroundColor="?card_back"-->
+            <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="5.0dip"-->
+            <!--                android:layout_marginBottom="5.0dip"-->
+            <!--                android:layout_weight="1.0"-->
+            <!--                android:clickable="true"-->
+            <!--                android:foreground="?selectableItemBackground"-->
+            <!--                android:stateListAnimator="@anim/lift_on_touch">-->
 
-        <!--            <androidx.cardview.widget.CardView-->
-        <!--                android:id="@+id/card_view4"-->
-        <!--                card_view:cardBackgroundColor="?card_back"-->
-        <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginLeft="5.0dip"-->
-        <!--                android:layout_marginRight="5.0dip"-->
-        <!--                android:layout_weight="1.0"-->
-        <!--                android:clickable="true"-->
-        <!--                android:foreground="?selectableItemBackground"-->
-        <!--                android:stateListAnimator="@anim/lift_on_touch">-->
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:gravity="center">-->
 
-        <!--                <RelativeLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="wrap_content"-->
-        <!--                    android:gravity="center">-->
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/cpu_tecxtview1"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginTop="10.0dip"-->
+            <!--                        android:fontFamily="sans-serif-condensed"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:text="@string/nav_os"-->
+            <!--                        android:textColor="?text_color"-->
+            <!--                        android:textStyle="bold" />-->
 
-        <!--                    <TextView-->
-        <!--                        android:id="@+id/storage_textview6"-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="10.0dip"-->
-        <!--                        android:fontFamily="sans-serif-condensed"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:text="@string/battery"-->
-        <!--                        android:textColor="?text_color"-->
-        <!--                        android:textStyle="bold" />-->
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_below="@+id/cpu_tecxtview1"-->
+            <!--                        android:layout_marginBottom="20.0dip"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical">-->
 
-        <!--                    <RelativeLayout-->
-        <!--                        android:id="@+id/battery_rel"-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_below="@+id/storage_textview6"-->
-        <!--                        android:gravity="center">-->
+            <!--                        <ImageView-->
+            <!--                            android:id="@+id/dashboard_os_image"-->
+            <!--                            android:layout_width="60.0dip"-->
+            <!--                            android:layout_height="60.0dip"-->
+            <!--                            android:layout_margin="5.0dip" />-->
 
-        <!--                        <ProgressBar-->
-        <!--                            android:id="@+id/pb"-->
-        <!--                            style="@android:style/Widget.ProgressBar.Horizontal"-->
-        <!--                            android:layout_width="100.0dip"-->
-        <!--                            android:layout_height="90.0dip"-->
-        <!--                            android:background="@drawable/ic_battery_outline"-->
-        <!--                            android:paddingTop="10.0dip"-->
-        <!--                            android:progressDrawable="@drawable/battery_progress_dashboard" />-->
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/os_name_text"-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:fontFamily="sans-serif-condensed"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:text="Android"-->
+            <!--                            android:textColor="?text_color" />-->
+            <!--                    </LinearLayout>-->
+            <!--                </RelativeLayout>-->
+            <!--            </androidx.cardview.widget.CardView>-->
 
-        <!--                        <TextView-->
-        <!--                            android:id="@+id/battery_percentage_status"-->
-        <!--                            android:layout_width="match_parent"-->
-        <!--                            android:layout_height="match_parent"-->
-        <!--                            android:layout_alignLeft="@+id/pb"-->
-        <!--                            android:layout_alignTop="@+id/pb"-->
-        <!--                            android:layout_alignRight="@+id/pb"-->
-        <!--                            android:layout_alignBottom="@+id/pb"-->
-        <!--                            android:layout_centerInParent="true"-->
-        <!--                            android:background="#00000000"-->
-        <!--                            android:gravity="center"-->
-        <!--                            android:text="0%"-->
-        <!--                            android:textColor="#ffffffff"-->
-        <!--                            android:textSize="13.0dip"-->
-        <!--                            android:textStyle="bold" />-->
-        <!--                    </RelativeLayout>-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card_view4"-->
+            <!--                card_view:cardBackgroundColor="?card_back"-->
+            <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="5.0dip"-->
+            <!--                android:layout_marginRight="5.0dip"-->
+            <!--                android:layout_weight="1.0"-->
+            <!--                android:clickable="true"-->
+            <!--                android:foreground="?selectableItemBackground"-->
+            <!--                android:stateListAnimator="@anim/lift_on_touch">-->
 
-        <!--                    <TextView-->
-        <!--                        android:id="@+id/battery_down_text"-->
-        <!--                        android:layout_width="wrap_content"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_below="@+id/battery_rel"-->
-        <!--                        android:fontFamily="sans-serif-condensed"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:text=""-->
-        <!--                        android:textColor="?text_color" />-->
-        <!--                </RelativeLayout>-->
-        <!--            </androidx.cardview.widget.CardView>-->
-        <!--        </LinearLayout>-->
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="wrap_content"-->
+            <!--                    android:gravity="center">-->
 
-        <!--        <LinearLayout-->
-        <!--            android:layout_width="match_parent"-->
-        <!--            android:layout_height="wrap_content"-->
-        <!--            android:orientation="horizontal">-->
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/storage_textview6"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginTop="10.0dip"-->
+            <!--                        android:fontFamily="sans-serif-condensed"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:text="@string/battery"-->
+            <!--                        android:textColor="?text_color"-->
+            <!--                        android:textStyle="bold" />-->
 
-        <!--            <androidx.cardview.widget.CardView-->
-        <!--                android:id="@+id/card_view5"-->
-        <!--                card_view:cardBackgroundColor="?card_back"-->
-        <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginLeft="5.0dip"-->
-        <!--                android:layout_marginBottom="5.0dip"-->
-        <!--                android:layout_weight="1.0"-->
-        <!--                android:clickable="true"-->
-        <!--                android:foreground="?selectableItemBackground"-->
-        <!--                android:stateListAnimator="@anim/lift_on_touch">-->
+            <!--                    <RelativeLayout-->
+            <!--                        android:id="@+id/battery_rel"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_below="@+id/storage_textview6"-->
+            <!--                        android:gravity="center">-->
 
-        <!--                <RelativeLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="match_parent"-->
-        <!--                    android:layout_marginBottom="10.0dip"-->
-        <!--                    android:gravity="center">-->
+            <!--                        <ProgressBar-->
+            <!--                            android:id="@+id/pb"-->
+            <!--                            style="@android:style/Widget.ProgressBar.Horizontal"-->
+            <!--                            android:layout_width="100.0dip"-->
+            <!--                            android:layout_height="90.0dip"-->
+            <!--                            android:background="@drawable/ic_battery_outline"-->
+            <!--                            android:paddingTop="10.0dip"-->
+            <!--                            android:progressDrawable="@drawable/battery_progress_dashboard" />-->
 
-        <!--                    <TextView-->
-        <!--                        android:id="@+id/dashboard_sensor"-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="10.0dip"-->
-        <!--                        android:fontFamily="sans-serif-condensed"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:text="@string/nav_sensor"-->
-        <!--                        android:textColor="?text_color"-->
-        <!--                        android:textStyle="bold" />-->
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/battery_percentage_status"-->
+            <!--                            android:layout_width="match_parent"-->
+            <!--                            android:layout_height="match_parent"-->
+            <!--                            android:layout_alignLeft="@+id/pb"-->
+            <!--                            android:layout_alignTop="@+id/pb"-->
+            <!--                            android:layout_alignRight="@+id/pb"-->
+            <!--                            android:layout_alignBottom="@+id/pb"-->
+            <!--                            android:layout_centerInParent="true"-->
+            <!--                            android:background="#00000000"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:text="0%"-->
+            <!--                            android:textColor="#ffffffff"-->
+            <!--                            android:textSize="13.0dip"-->
+            <!--                            android:textStyle="bold" />-->
+            <!--                    </RelativeLayout>-->
 
-        <!--                    <LinearLayout-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_below="@+id/dashboard_sensor"-->
-        <!--                        android:layout_marginBottom="10.0dip"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:orientation="vertical">-->
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/battery_down_text"-->
+            <!--                        android:layout_width="wrap_content"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_below="@+id/battery_rel"-->
+            <!--                        android:fontFamily="sans-serif-condensed"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:text=""-->
+            <!--                        android:textColor="?text_color" />-->
+            <!--                </RelativeLayout>-->
+            <!--            </androidx.cardview.widget.CardView>-->
+            <!--        </LinearLayout>-->
 
-        <!--                        <ImageView-->
-        <!--                            android:id="@+id/dashboard_sensor_image"-->
-        <!--                            android:layout_width="50.0dip"-->
-        <!--                            android:layout_height="50.0dip"-->
-        <!--                            android:layout_margin="10.0dip"-->
-        <!--                            android:src="@drawable/ic_sensor" />-->
+            <!--        <LinearLayout-->
+            <!--            android:layout_width="match_parent"-->
+            <!--            android:layout_height="wrap_content"-->
+            <!--            android:orientation="horizontal">-->
 
-        <!--                        <TextView-->
-        <!--                            android:id="@+id/sensor_number"-->
-        <!--                            android:layout_width="wrap_content"-->
-        <!--                            android:layout_height="wrap_content"-->
-        <!--                            android:fontFamily="sans-serif-condensed"-->
-        <!--                            android:gravity="center"-->
-        <!--                            android:text="0 Available "-->
-        <!--                            android:textColor="?text_color" />-->
-        <!--                    </LinearLayout>-->
-        <!--                </RelativeLayout>-->
-        <!--            </androidx.cardview.widget.CardView>-->
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card_view5"-->
+            <!--                card_view:cardBackgroundColor="?card_back"-->
+            <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="5.0dip"-->
+            <!--                android:layout_marginBottom="5.0dip"-->
+            <!--                android:layout_weight="1.0"-->
+            <!--                android:clickable="true"-->
+            <!--                android:foreground="?selectableItemBackground"-->
+            <!--                android:stateListAnimator="@anim/lift_on_touch">-->
 
-        <!--            <androidx.cardview.widget.CardView-->
-        <!--                android:id="@+id/card_view6"-->
-        <!--                card_view:cardBackgroundColor="?card_back"-->
-        <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
-        <!--                android:layout_width="match_parent"-->
-        <!--                android:layout_height="wrap_content"-->
-        <!--                android:layout_marginLeft="5.0dip"-->
-        <!--                android:layout_marginRight="5.0dip"-->
-        <!--                android:layout_marginBottom="5.0dip"-->
-        <!--                android:layout_weight="1.0"-->
-        <!--                android:clickable="true"-->
-        <!--                android:foreground="?selectableItemBackground"-->
-        <!--                android:stateListAnimator="@anim/lift_on_touch">-->
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginBottom="10.0dip"-->
+            <!--                    android:gravity="center">-->
 
-        <!--                <RelativeLayout-->
-        <!--                    android:layout_width="match_parent"-->
-        <!--                    android:layout_height="match_parent"-->
-        <!--                    android:layout_marginBottom="10.0dip"-->
-        <!--                    android:gravity="center">-->
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/dashboard_sensor"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginTop="10.0dip"-->
+            <!--                        android:fontFamily="sans-serif-condensed"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:text="@string/nav_sensor"-->
+            <!--                        android:textColor="?text_color"-->
+            <!--                        android:textStyle="bold" />-->
 
-        <!--                    <TextView-->
-        <!--                        android:id="@+id/text_dashboard_apps"-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_marginTop="10.0dip"-->
-        <!--                        android:fontFamily="sans-serif-condensed"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:text="@string/apps"-->
-        <!--                        android:textColor="?text_color"-->
-        <!--                        android:textStyle="bold" />-->
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_below="@+id/dashboard_sensor"-->
+            <!--                        android:layout_marginBottom="10.0dip"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical">-->
 
-        <!--                    <LinearLayout-->
-        <!--                        android:layout_width="match_parent"-->
-        <!--                        android:layout_height="wrap_content"-->
-        <!--                        android:layout_below="@+id/text_dashboard_apps"-->
-        <!--                        android:layout_marginBottom="10.0dip"-->
-        <!--                        android:gravity="center"-->
-        <!--                        android:orientation="vertical">-->
+            <!--                        <ImageView-->
+            <!--                            android:id="@+id/dashboard_sensor_image"-->
+            <!--                            android:layout_width="50.0dip"-->
+            <!--                            android:layout_height="50.0dip"-->
+            <!--                            android:layout_margin="10.0dip"-->
+            <!--                            android:src="@drawable/ic_sensor" />-->
 
-        <!--                        <ImageView-->
-        <!--                            android:id="@+id/dashboard_apps_image"-->
-        <!--                            android:layout_width="50.0dip"-->
-        <!--                            android:layout_height="50.0dip"-->
-        <!--                            android:layout_margin="10.0dip"-->
-        <!--                            android:src="@drawable/android" />-->
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/sensor_number"-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:fontFamily="sans-serif-condensed"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:text="0 Available "-->
+            <!--                            android:textColor="?text_color" />-->
+            <!--                    </LinearLayout>-->
+            <!--                </RelativeLayout>-->
+            <!--            </androidx.cardview.widget.CardView>-->
 
-        <!--                        <TextView-->
-        <!--                            android:id="@+id/apps_number"-->
-        <!--                            android:layout_width="wrap_content"-->
-        <!--                            android:layout_height="wrap_content"-->
-        <!--                            android:fontFamily="sans-serif-condensed"-->
-        <!--                            android:gravity="center"-->
-        <!--                            android:text="0 Available"-->
-        <!--                            android:textColor="?text_color" />-->
-        <!--                    </LinearLayout>-->
-        <!--                </RelativeLayout>-->
-        <!--            </androidx.cardview.widget.CardView>-->
-        <!--        </LinearLayout>-->
-    </LinearLayout>
-</ScrollView>
+            <!--            <androidx.cardview.widget.CardView-->
+            <!--                android:id="@+id/card_view6"-->
+            <!--                card_view:cardBackgroundColor="?card_back"-->
+            <!--                card_view:cardCornerRadius="@dimen/corner_radius"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_marginLeft="5.0dip"-->
+            <!--                android:layout_marginRight="5.0dip"-->
+            <!--                android:layout_marginBottom="5.0dip"-->
+            <!--                android:layout_weight="1.0"-->
+            <!--                android:clickable="true"-->
+            <!--                android:foreground="?selectableItemBackground"-->
+            <!--                android:stateListAnimator="@anim/lift_on_touch">-->
+
+            <!--                <RelativeLayout-->
+            <!--                    android:layout_width="match_parent"-->
+            <!--                    android:layout_height="match_parent"-->
+            <!--                    android:layout_marginBottom="10.0dip"-->
+            <!--                    android:gravity="center">-->
+
+            <!--                    <TextView-->
+            <!--                        android:id="@+id/text_dashboard_apps"-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_marginTop="10.0dip"-->
+            <!--                        android:fontFamily="sans-serif-condensed"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:text="@string/apps"-->
+            <!--                        android:textColor="?text_color"-->
+            <!--                        android:textStyle="bold" />-->
+
+            <!--                    <LinearLayout-->
+            <!--                        android:layout_width="match_parent"-->
+            <!--                        android:layout_height="wrap_content"-->
+            <!--                        android:layout_below="@+id/text_dashboard_apps"-->
+            <!--                        android:layout_marginBottom="10.0dip"-->
+            <!--                        android:gravity="center"-->
+            <!--                        android:orientation="vertical">-->
+
+            <!--                        <ImageView-->
+            <!--                            android:id="@+id/dashboard_apps_image"-->
+            <!--                            android:layout_width="50.0dip"-->
+            <!--                            android:layout_height="50.0dip"-->
+            <!--                            android:layout_margin="10.0dip"-->
+            <!--                            android:src="@drawable/android" />-->
+
+            <!--                        <TextView-->
+            <!--                            android:id="@+id/apps_number"-->
+            <!--                            android:layout_width="wrap_content"-->
+            <!--                            android:layout_height="wrap_content"-->
+            <!--                            android:fontFamily="sans-serif-condensed"-->
+            <!--                            android:gravity="center"-->
+            <!--                            android:text="0 Available"-->
+            <!--                            android:textColor="?text_color" />-->
+            <!--                    </LinearLayout>-->
+            <!--                </RelativeLayout>-->
+            <!--            </androidx.cardview.widget.CardView>-->
+            <!--        </LinearLayout>-->
+        </LinearLayout>
+    </ScrollView>
+
+</layout>

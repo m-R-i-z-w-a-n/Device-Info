@@ -14,7 +14,8 @@ class TestMyDeviceFragment : Fragment(R.layout.fragment_test_my_device) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         _binding = FragmentTestMyDeviceBinding.bind(view)
-        
+
+
     }
 
     override fun onDestroy() {

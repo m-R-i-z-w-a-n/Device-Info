@@ -10,4 +10,5 @@
 
     <color name="my_color">#12808D</color>
     <color name="progress_bar_color">#11818E</color>
+    <color name="colorTheme">#ff13818d</color>
 </resources>

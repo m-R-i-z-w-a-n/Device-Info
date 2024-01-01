@@ -5,6 +5,8 @@ import android.bluetooth.BluetoothAdapter
 import android.os.Build
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.practice.deviceinfo.R
@@ -18,31 +20,28 @@ class DashboardFragment : Fragment(R.layout.fragment_dashboard) {
     private var _binding: FragmentDashboardBinding? = null
 
     private val deviceViewModel by viewModels<DeviceViewModel>()
-    private val cpuViewModel by viewModels<CPUViewModel>()
+//    private val cpuViewModel by viewModels<CPUViewModel>()
 
     private val binding get() = _binding!!
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        _binding = FragmentDashboardBinding.bind(view)
+        deviceViewModel.getDeviceInfo()
+        _binding = DataBindingUtil.bind(view)
+        binding.deviceViewModel = deviceViewModel
+        binding.lifecycleOwner = this
+
         initViews()
 
     }
 
     private fun initViews() {
-        deviceViewModel.getDeviceInfo()
-
-        deviceViewModel.deviceManufacturer.observe(requireActivity()) {
-            binding.dashDeviceName.text = it
-        }
-        deviceViewModel.deviceBrand.observe(requireActivity()) {
-            binding.dashModelName.text = it
-        }
-
-        binding.testMyDeviceLinearLayout.setOnClickListener {
+        binding.testMyDeviceCard.setOnClickListener {
             requireActivity().supportFragmentManager.beginTransaction().apply {
                 replace(R.id.fragment_container, TestMyDeviceFragment())
                 commit()
             }
+
+            Toast.makeText(requireContext(), "Clicking test summary", Toast.LENGTH_SHORT).show()
         }
     }
 
